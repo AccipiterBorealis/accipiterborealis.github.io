@@ -2,23 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Commonplace Book</title>
+  <title>Post</title>
 
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Commonplace Book</h1>
-    <p class="subtitle">Notes, essays, and reflections</p>
-
-    <div class="controls">
-      <input id="search" placeholder="Search…">
-      <button id="themeToggle">☾</button>
-    </div>
+    <h1 id="post-title"></h1>
+    <p class="subtitle" id="post-meta"></p>
+    <div class="tags" id="post-tags"></div>
+    <button onclick="window.history.back()">← Back</button>
+    <button id="themeToggle">☾</button>
   </header>
 
-  <main id="posts"></main>
+  <main>
+    <div id="post-content"></div>
+  </main>
 
   <script src="script.js"></script>
 </body>

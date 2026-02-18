@@ -40,10 +40,11 @@ h1 {
 .subtitle {
   font-style: italic;
   color: var(--muted);
+  margin-bottom: 1rem;
 }
 
 .controls {
-  margin-top: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 input {
@@ -52,6 +53,7 @@ input {
   border: 1px solid var(--muted);
   background: transparent;
   color: inherit;
+  margin-right: 0.5rem;
 }
 
 button {
@@ -61,6 +63,7 @@ button {
   border-radius: 999px;
   cursor: pointer;
   box-shadow: 0 6px 18px var(--shadow);
+  margin-right: 0.5rem;
 }
 
 main {
@@ -69,23 +72,34 @@ main {
   padding: 1rem 1.5rem 3rem;
 }
 
-.post {
+.post-card {
   background: var(--card);
   padding: 1.8rem 2.1rem;
   border-radius: 20px;
   margin-bottom: 2.2rem;
   box-shadow: 0 14px 34px var(--shadow);
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
-.post h2 {
-  font-size: 1.8rem;
+.post-card:hover {
+  transform: translateY(-3px);
+}
+
+.post-card h2 {
+  font-size: 1.6rem;
   margin-top: 0;
 }
 
-.meta {
+.post-card .meta {
   font-size: 0.85rem;
   color: var(--muted);
   margin-bottom: 0.8rem;
+}
+
+.post-card .excerpt {
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
 
 .tags span {
@@ -96,12 +110,13 @@ main {
   margin-right: 0.3rem;
 }
 
-.post p {
+#post-content {
   font-size: 1.1rem;
   line-height: 1.75;
+  padding-top: 1rem;
 }
 
-.post p:first-of-type::first-letter {
+#post-content p:first-of-type::first-letter {
   float: left;
   font-size: 3.4rem;
   line-height: 1;
