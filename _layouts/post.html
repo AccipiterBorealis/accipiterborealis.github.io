@@ -5,7 +5,15 @@
   <title>{{ page.title }}</title>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
-<body>
+
+<script>
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+  }
+</script>
+
+<body class="">
+
 
 <article>
   <h1>{{ page.title }}</h1>

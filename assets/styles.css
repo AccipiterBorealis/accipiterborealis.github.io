@@ -1,15 +1,125 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=EB+Garamond:wght@400;500&family=Playfair+Display&display=swap');
 
-body {
-  font-family: Inter, sans-serif;
-  background: #f7f9fc;
-  margin: 0;
-  line-height: 1.7;
+:root {
+  --bg: #f7f9fc;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #3b82f6;
+
+  --bg-dark: #0f172a;
+  --card-dark: #020617;
+  --text-dark: #e5e7eb;
+  --muted-dark: #9ca3af;
+
+  --font-ui: 'Inter', sans-serif;
+  --font-body: 'EB Garamond', serif;
 }
 
+/* ---------- BASE ---------- */
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* ---------- HEADER ---------- */
+
+header {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: var(--muted);
+}
+
+/* ---------- TOGGLE ---------- */
+
+.toggle {
+  margin-top: 1.5rem;
+}
+
+.toggle button {
+  background: none;
+  border: 1px solid var(--muted);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: inherit;
+}
+
+/* ---------- MAIN ---------- */
+
+main {
+  max-width: 720px;
+  margin: auto;
+  padding: 1rem;
+}
+
+/* ---------- POST CARDS ---------- */
+
 article {
-  background: white;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border-radius: 10px;
+  background: var(--card);
+  padding: 2.2rem;
+  margin-bottom: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+article:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.08);
+}
+
+body.dark article {
+  background: var(--card-dark);
+}
+
+/* ---------- POST TEXT ---------- */
+
+article h2, article h1 {
+  font-family: 'Playfair Display', serif;
+  margin-top: 0;
+}
+
+article p {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+}
+
+/* ---------- META ---------- */
+
+.meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+}
+
+/* ---------- LINKS ---------- */
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

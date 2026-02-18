@@ -14,7 +14,13 @@ layout: default
 <header>
   <h1>My Personal Blog</h1>
   <p>Thoughts, notes, and quiet observations</p>
+  <div class="toggle">
+    <button onclick="toggleDark()">🌙 Toggle theme</button>
+  </div>
 </header>
+
+  
+
 
 <main>
   {% for post in site.posts %}
@@ -25,6 +31,20 @@ layout: default
     </article>
   {% endfor %}
 </main>
+
+<script>
+  function toggleDark() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem(
+      "theme",
+      document.body.classList.contains("dark") ? "dark" : "light"
+    );
+  }
+
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+  }
+</script>
 
 </body>
 </html>
