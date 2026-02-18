@@ -1,52 +1,27 @@
----
-layout: none
----
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{ site.title }}</title>
-  <link rel="stylesheet" href="/assets/styles.css">
+  <title>Commonplace Book</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+  <header>
+    <h1>Commonplace Book</h1>
+    <p class="subtitle">Notes, essays, and reflections</p>
 
-<header>
-  <h1>{{ site.title }}</h1>
-  <p>Thoughts, notes, and quiet observations</p>
+    <div class="controls">
+      <input id="search" placeholder="Search…">
+      <button id="themeToggle">☾</button>
+      <button id="newPost">＋</button>
+    </div>
+  </header>
 
-  <div class="toggle">
-    <button onclick="toggleTheme()">🌙 Toggle theme</button>
-  </div>
-</header>
+  <main id="posts"></main>
 
-<main>
-  {% for post in site.posts %}
-    <article>
-      <h2>
-        <a href="{{ post.url }}">{{ post.title }}</a>
-      </h2>
-      <div class="meta">
-        {{ post.date | date: "%B %d, %Y" }}
-      </div>
-      {{ post.excerpt }}
-    </article>
-  {% endfor %}
-</main>
-
-<script>
-  function toggleTheme() {
-    document.body.classList.toggle("dark");
-    localStorage.setItem(
-      "theme",
-      document.body.classList.contains("dark") ? "dark" : "light"
-    );
-  }
-
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-  }
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
