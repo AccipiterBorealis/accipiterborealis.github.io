@@ -27,7 +27,7 @@ body {
 }
 
 header {
-  max-width: 680px;
+  max-width: 720px;
   margin: auto;
   padding: 3rem 1.5rem 2rem;
 }
@@ -45,15 +45,17 @@ h1 {
 
 .controls {
   margin-bottom: 2rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
-input {
+input, select {
   padding: 0.4rem 0.6rem;
   border-radius: 6px;
   border: 1px solid var(--muted);
   background: transparent;
   color: inherit;
-  margin-right: 0.5rem;
 }
 
 button {
@@ -63,11 +65,10 @@ button {
   border-radius: 999px;
   cursor: pointer;
   box-shadow: 0 6px 18px var(--shadow);
-  margin-right: 0.5rem;
 }
 
 main {
-  max-width: 680px;
+  max-width: 720px;
   margin: auto;
   padding: 1rem 1.5rem 3rem;
 }
@@ -79,11 +80,12 @@ main {
   margin-bottom: 2.2rem;
   box-shadow: 0 14px 34px var(--shadow);
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .post-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px var(--shadow);
 }
 
 .post-card h2 {
@@ -121,4 +123,10 @@ main {
   font-size: 3.4rem;
   line-height: 1;
   padding-right: 0.3rem;
+}
+
+/* Responsive */
+@media(max-width: 600px){
+  header { padding: 2rem 1rem; }
+  .post-card { padding: 1.2rem 1.5rem; }
 }

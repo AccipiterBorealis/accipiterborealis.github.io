@@ -5,14 +5,14 @@ const posts = [
     title: "On Keeping a Commonplace Book",
     date: "February 2026",
     tags: ["writing", "academia"],
-    content: "The commonplace book is not a diary, but a method of attention. To write is not merely to record, but to notice."
+    content: "The commonplace book is not a diary, but a method of attention. To write is not merely to record, but to notice. A good commonplace book captures ideas, quotes, and reflections that inspire thought."
   },
   {
     id: 2,
     title: "Margins",
     date: "January 2026",
     tags: ["reading", "notes"],
-    content: "The most important work often happens in the margins—of texts, of days, of lives."
+    content: "The most important work often happens in the margins—of texts, of days, of lives. Margins are where thoughts expand, where annotations illuminate meaning."
   }
 ];
 
@@ -41,6 +41,16 @@ function readingTime(text) {
 if (document.getElementById("posts")) {
   const postsEl = document.getElementById("posts");
   const search = document.getElementById("search");
+  const tagFilter = document.getElementById("tagFilter");
+
+  // Populate tag filter
+  const allTags = [...new Set(posts.flatMap(p => p.tags))];
+  allTags.forEach(tag => {
+    const opt = document.createElement("option");
+    opt.value = tag;
+    opt.textContent = tag;
+    tagFilter.appendChild(opt);
+  });
 
   function render(list) {
     postsEl.innerHTML = "";
@@ -61,15 +71,19 @@ if (document.getElementById("posts")) {
     });
   }
 
+  function filterPosts() {
+    const q = search.value.toLowerCase();
+    const tag = tagFilter.value;
+    render(posts.filter(p =>
+      (p.title.toLowerCase().includes(q) || p.content.toLowerCase().includes(q)) &&
+      (tag === "" || p.tags.includes(tag))
+    ));
+  }
+
   render(posts);
 
-  search.oninput = () => {
-    const q = search.value.toLowerCase();
-    render(posts.filter(p =>
-      p.title.toLowerCase().includes(q) ||
-      p.content.toLowerCase().includes(q)
-    ));
-  };
+  search.oninput = filterPosts;
+  tagFilter.onchange = filterPosts;
 }
 
 // ----- FULL POST PAGE -----
