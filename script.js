@@ -3,6 +3,7 @@ const toggleBtn = document.getElementById("themeToggle");
 const newPostBtn = document.getElementById("newPost");
 const search = document.getElementById("search");
 
+// ----- THEME -----
 if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
 }
@@ -15,14 +16,21 @@ toggleBtn.onclick = () => {
   );
 };
 
-let posts = [];
-
-fetch("posts.json")
-  .then(r => r.json())
-  .then(data => {
-    posts = data;
-    render(posts);
-  });
+// ----- POSTS -----
+let posts = [
+  {
+    title: "On Keeping a Commonplace Book",
+    date: "February 2026",
+    tags: ["writing", "academia"],
+    content: "The commonplace book is not a diary, but a method of attention. To write is not merely to record, but to notice."
+  },
+  {
+    title: "Margins",
+    date: "January 2026",
+    tags: ["reading", "notes"],
+    content: "The most important work often happens in the margins—of texts, of days, of lives."
+  }
+];
 
 function readingTime(text) {
   return Math.ceil(text.split(" ").length / 200);
@@ -43,6 +51,9 @@ function render(list) {
   });
 }
 
+render(posts);
+
+// ----- SEARCH -----
 search.oninput = () => {
   const q = search.value.toLowerCase();
   render(posts.filter(p =>
@@ -51,6 +62,7 @@ search.oninput = () => {
   ));
 };
 
+// ----- NEW POST -----
 newPostBtn.onclick = () => {
   const title = prompt("Title");
   const content = prompt("Content");
