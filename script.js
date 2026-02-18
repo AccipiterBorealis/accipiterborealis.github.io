@@ -2,14 +2,14 @@
 const posts = [
   {
     id: 1,
-    title: "On Keeping a Commonplace Book",
+    title: "🔥 On Keeping a Commonplace Book",
     date: "February 2026",
     tags: ["writing", "academia"],
     content: "The commonplace book is not a diary, but a method of attention. To write is not merely to record, but to notice. A good commonplace book captures ideas, quotes, and reflections that inspire thought."
   },
   {
     id: 2,
-    title: "Margins",
+    title: "🔥 Margins",
     date: "January 2026",
     tags: ["reading", "notes"],
     content: "The most important work often happens in the margins—of texts, of days, of lives. Margins are where thoughts expand, where annotations illuminate meaning."
@@ -21,6 +21,8 @@ const toggleBtns = document.querySelectorAll("#themeToggle");
 toggleBtns.forEach(btn => {
   btn.addEventListener("click", () => {
     document.body.classList.toggle("dark");
+    // Change emoji on toggle
+    btn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
     localStorage.setItem(
       "theme",
       document.body.classList.contains("dark") ? "dark" : "light"
@@ -30,6 +32,7 @@ toggleBtns.forEach(btn => {
 
 if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
+  toggleBtns.forEach(btn => btn.textContent = "☀️");
 }
 
 // ----- HELPER -----
@@ -43,7 +46,6 @@ if (document.getElementById("posts")) {
   const search = document.getElementById("search");
   const tagFilter = document.getElementById("tagFilter");
 
-  // Populate tag filter
   const allTags = [...new Set(posts.flatMap(p => p.tags))];
   allTags.forEach(tag => {
     const opt = document.createElement("option");
@@ -81,7 +83,6 @@ if (document.getElementById("posts")) {
   }
 
   render(posts);
-
   search.oninput = filterPosts;
   tagFilter.onchange = filterPosts;
 }

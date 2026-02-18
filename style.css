@@ -1,24 +1,21 @@
 :root {
-  --bg: #f6f4ef;
-  --text: #1f1f1f;
-  --card: #ffffff;
-  --muted: #666;
-  --shadow: rgba(0,0,0,0.08);
+  --bg: #1e90ff;        /* bold blue background */
+  --text: #ffffff;       /* white text */
+  --card: #ffff00;       /* bright yellow cards */
+  --muted: #ff0000;      /* red for meta/tags */
+  --shadow: rgba(0,0,0,0.3);
   --font: 'EB Garamond', serif;
 }
 
 body.dark {
-  --bg: #121212;
-  --text: #eaeaea;
-  --card: #1e1e1e;
-  --muted: #aaa;
+  --bg: #0b0b3b;        /* dark mode dark blue */
+  --text: #f0f0f0;
+  --card: #ff4500;      /* orange cards in dark mode */
+  --muted: #ffdd00;
   --shadow: rgba(0,0,0,0.5);
 }
 
-* {
-  box-sizing: border-box;
-  font-family: var(--font);
-}
+* { box-sizing: border-box; font-family: var(--font); }
 
 body {
   margin: 0;
@@ -33,38 +30,37 @@ header {
 }
 
 h1 {
-  font-size: 3.2rem;
+  font-size: 4rem;
   margin-bottom: 0.2rem;
 }
 
 .subtitle {
   font-style: italic;
   color: var(--muted);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .controls {
-  margin-bottom: 2rem;
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem;
 }
 
 input, select {
-  padding: 0.4rem 0.6rem;
+  padding: 0.5rem 0.7rem;
   border-radius: 6px;
-  border: 1px solid var(--muted);
-  background: transparent;
+  border: 2px solid var(--muted);
+  background: var(--card);
   color: inherit;
+  font-size: 1.2rem;
 }
 
 button {
   background: var(--card);
   border: none;
-  padding: 0.4rem 0.9rem;
+  padding: 0.5rem 1rem;
   border-radius: 999px;
   cursor: pointer;
   box-shadow: 0 6px 18px var(--shadow);
+  font-size: 1.2rem;
 }
 
 main {
@@ -75,58 +71,54 @@ main {
 
 .post-card {
   background: var(--card);
-  padding: 1.8rem 2.1rem;
-  border-radius: 20px;
-  margin-bottom: 2.2rem;
-  box-shadow: 0 14px 34px var(--shadow);
+  padding: 2rem 2.5rem;
+  border-radius: 30px;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 20px 40px var(--shadow);
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
+  border: 3px solid red;
 }
 
 .post-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 38px var(--shadow);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px var(--shadow);
 }
 
 .post-card h2 {
-  font-size: 1.6rem;
+  font-size: 2rem;
   margin-top: 0;
 }
 
 .post-card .meta {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--muted);
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 .post-card .excerpt {
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   line-height: 1.6;
 }
 
 .tags span {
-  font-size: 0.75rem;
-  border: 1px solid var(--muted);
-  padding: 0.15rem 0.5rem;
+  font-size: 0.9rem;
+  border: 2px solid var(--muted);
+  padding: 0.2rem 0.6rem;
   border-radius: 999px;
   margin-right: 0.3rem;
 }
 
 #post-content {
-  font-size: 1.1rem;
-  line-height: 1.75;
+  font-size: 1.3rem;
+  line-height: 1.8;
   padding-top: 1rem;
 }
-
 #post-content p:first-of-type::first-letter {
-  float: left;
-  font-size: 3.4rem;
-  line-height: 1;
-  padding-right: 0.3rem;
+  float: left; font-size: 4rem; line-height: 1; padding-right: 0.3rem;
 }
 
-/* Responsive */
 @media(max-width: 600px){
   header { padding: 2rem 1rem; }
-  .post-card { padding: 1.2rem 1.5rem; }
+  .post-card { padding: 1.5rem 2rem; }
 }
